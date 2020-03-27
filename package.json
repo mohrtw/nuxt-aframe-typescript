@@ -1,0 +1,29 @@
+{
+    "name": "nuxt-aframe-typescript",
+    "description": "practice using nuxt with typescript",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "nuxt"
+    },
+    "dependencies": {
+        "@types/aframe": "^0.8.4",
+        "aframe": "^1.0.4",
+        "config": "^3.3.1",
+        "networked-aframe": "^0.7.0",
+        "nuxt": "^2.12.1",
+        "vue-fragment": "^1.5.1",
+        "vue-property-decorator": "^8.4.1"
+    },
+    "devDependencies": {
+        "@nuxt/typescript-build": "^0.6.1",
+        "@nuxt/typescript-runtime": "^0.4.1",
+        "babel-core": "^6.26.3",
+        "babel-plugin-object-rest-spread": "0.0.0",
+        "babel-plugin-syntax-dynamic-import": "^6.18.0",
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-preset-env": "^1.7.0",
+        "config-webpack": "^1.0.4",
+        "webpack": "^4.42.1",
+        "webpack-config": "^7.5.0"
+    }
+}
