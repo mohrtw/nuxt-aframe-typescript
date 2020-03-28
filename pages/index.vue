@@ -1,16 +1,7 @@
 <template>
-    <div>
-        <!-- <scene>
-        </scene> -->
-        <nuxt-link to="/app"> A-Frame scene
-        </nuxt-link>
-        <!-- <user :user="BaseUser">
-        </user>
-        <user-class :user="StoreUser">
-        </user-class>
-        <user-class-store :user="StoreUser">
-        </user-class-store> -->
-    </div>
+    <client-only>
+        <scene-networked />
+    </client-only>
 </template>
 
 <script lang="ts">
@@ -24,13 +15,15 @@ import userClass from '../components/userClass.vue'
 import userClassStore from '../components/userClass.vue'
 import { User } from '../components/userClass.vue'
 
+import sceneNetworked from '../components/sceneNetworked.vue'
 
 @Component({
     components: {
         'scene': scene,
         'user': user,
         'user-class': userClass,
-        'user-class-store': userClassStore
+        'user-class-store': userClassStore,
+        'scene-networked': sceneNetworked
     }
 })
 export default class IndexComp extends Vue  {
@@ -43,14 +36,10 @@ export default class IndexComp extends Vue  {
         lastName: ''
     }
     mounted() {
-        console.log('Mounted Index')
         const name = this.$store.getters['fullName'] as ReturnType<typeof getters.name>
-        console.log(name);
         this.StoreUser.firstName = (this.$store.state as RootState).myFirstName
         this.StoreUser.lastName = (this.$store.state as RootState).myLastName
-
         const aVal = (this.$store.state.mymod as MyModuleState).aVal
-        console.log(aVal)
     }
 }
 </script>

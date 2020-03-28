@@ -13,21 +13,15 @@
         <a-entity id="player">
         </a-entity>
     </a-scene>
+
 </template>
 
 <script lang="ts">
 // @ts-nocheck
 
 export default {
-
     mounted() {
-        var scene = document.querySelector('a-scene');  
-        if (scene.hasLoaded) {
-            this.onSceneLoaded()
-        }
-        else {
-            scene.addEventListener('loaded', self.onSceneLoaded);
-        }
+            document.querySelector('a-scene').addEventListener('loaded', self.onSceneLoaded) 
     },
 
     methods: {
@@ -38,7 +32,6 @@ export default {
         },
 
         createAvatarTemplate() {
-            if (CONFIG.DEBUG) {console.log('createAvatarGLTFTemplate()');}
             var frag = this.fragmentFromString(`
             <template id="avatar-rig-template" v-pre>
                 <a-entity>
@@ -54,20 +47,10 @@ export default {
             </template> 
             `);
             var assets = document.querySelector('a-assets');
-            try {
                 assets.appendChild(frag);
-            }
-            catch (err) {
-                console.log('createAvatarGLTFTemplate error');
-                console.log(err);
-            }
-            
         },
 
         addAvatarTemplate() {
-            if (CONFIG.DEBUG) {console.log("addAvatarTemplate");};
-
-            try {
                 NAF.schemas.add({
                     template: '#avatar-rig-template',
                     components: [
@@ -92,36 +75,18 @@ export default {
                     {
                         selector: '.player-camera',
                         component: 'position'
-                    },
-                    ]
+                    }]
                 });
-            }
-            catch (err) {
-                console.log('addAvatarRigTemplate error');
-                console.log(err);
-            }
         },
 
         networkAvatarRig() {
-            if (CONFIG.DEBUG) {console.log('networkAvatarRig');}
             var player = document.getElementById('player');
-            try {
-                if (player) {
-                    player.setAttribute("networked",
-                        { 'template': '#avatar-rig-template',
-                        'attachTemplateToLocal': false });
-                }
-                else {
-                    console.log("failed to set up NAF on player");
-                }
-            }
-            catch (e) {
-                console.log("failed to set up NAF on player");
-                console.log(e);
-            }
-            finally {
-                // console.log('networkAvatarRig finally');
-            }
+                if (!player) console.log("failed to set up NAF on player");
+                
+                 player.setAttribute("networked",
+                    { 'template': '#avatar-rig-template',
+                    'attachTemplateToLocal': false });
+    
         },
 
         fragmentFromString(strHTML) {
