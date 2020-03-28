@@ -2,7 +2,10 @@
   <!-- TODO: Look at aframeAsset, sceneObjects and avatar
   These will need to be dynamically loaded from our REST API (Nakama)
   -->
-    <a-scene :networked-scene="'serverURL: https://nxr.lifescope.io; app: lifescope-xr; room: myxrroom; audio: true; adapter: webrtc;'">
+    <a-scene networked-scene="room: dev;
+      debug: true;
+    serverURL:http://localhost:8080;
+      adapter: webrtc;">
     <assets />
     <sceneObjects />
     <avatar />
@@ -17,6 +20,12 @@ import avatar from "./avatar.vue"
 import assets from "./assets.vue"
 import sceneObjects from "./scene-objects.vue"
 
+const sceneAttributes = `
+    room: xrchat;
+    debug: true;
+    adapter: socketio;
+    `
+
 export default {
     components : {
         assets,
@@ -30,6 +39,7 @@ export default {
 
     methods: {
         onSceneLoaded() {
+            document.querySelector('a-scene').setAttribute("networked-scene", sceneAttributes)
             // Add to vuex store?
         }
     }

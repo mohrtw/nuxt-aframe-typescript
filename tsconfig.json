@@ -8,6 +8,7 @@
       "esnext.asynciterable",
       "dom"
     ],
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "allowJs": true,
     "experimentalDecorators": true,
@@ -25,9 +26,8 @@
     },
     "types": [
       "@types/node",
-      "@nuxt/types",
-      "types/vue-fragment.d.ts"
-    ]
+      "@nuxt/types"
+        ]
   },
   "exclude": [
     "node_modules"

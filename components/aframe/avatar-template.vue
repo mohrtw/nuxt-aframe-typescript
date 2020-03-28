@@ -1,28 +1,56 @@
-Vue.component('avatar-template', {
-  template: `<template  id="avatar-template">
-  <a-entity class="avatar">
-    <a-sphere class="head" color="#ffffff" scale="0.45 0.5 0.4"></a-sphere>
-    <a-entity class="face" position="0 0.05 0">
-      <a-sphere class="eye" color="#efefef" position="0.16 0.1 -0.35" scale="0.12 0.12 0.12">
-        <a-sphere class="pupil" color="#000" position="0 0 -1" scale="0.2 0.2 0.2"></a-sphere>
-      </a-sphere>
-      <a-sphere class="eye" color="#efefef" position="-0.16 0.1 -0.35" scale="0.12 0.12 0.12">
-        <a-sphere class="pupil" color="#000" position="0 0 -1" scale="0.2 0.2 0.2"></a-sphere>
-      </a-sphere>
-    </a-entity>
-  </a-entity>
-</template>`,
-  
-   mounted(){
+<template>
+<!-- Avatar -->
+        <div id="avatar-template">
+          <a-entity class="avatar">
+            <a-sphere class="head"
+              color="#ffffff"
+              scale="0.45 0.5 0.4"
+            ></a-sphere>
+            <a-entity class="face"
+              position="0 0.05 0"
+            >
+              <a-sphere class="eye"
+                color="#efefef"
+                position="0.16 0.1 -0.35"
+                scale="0.12 0.12 0.12"
+              >
+                <a-sphere class="pupil"
+                  color="#000"
+                  position="0 0 -1"
+                  scale="0.2 0.2 0.2"
+                ></a-sphere>
+              </a-sphere>
+              <a-sphere class="eye"
+                color="#efefef"
+                position="-0.16 0.1 -0.35"
+                scale="0.12 0.12 0.12"
+              >
+                <a-sphere class="pupil"
+                  color="#000"
+                  position="0 0 -1"
+                  scale="0.2 0.2 0.2"
+                ></a-sphere>
+              </a-sphere>
+            </a-entity>
+          </a-entity>
+        </div>
+</template> 
+
+<script lang="ts">
+
+export default {
+    
+mounted(){
   // Add this to the vuex store
   // @ts-ignore
             document.querySelector('a-entity').addEventListener('loaded', self.onSceneLoaded) 
 },
-  methods: {
+
+    methods: {
     onSceneLoaded() {
             // @ts-ignore
             NAF.schemas.add({
-              template: "#avatar-rig-template",
+              template: "#avatar-template",
               components: [
                 {
                   component: "position"
@@ -50,5 +78,7 @@ Vue.component('avatar-template', {
             });
       // Add to vuex store?
   }
+    }
+
   }
-})
+  </script>
