@@ -1,5 +1,5 @@
 import AFrame from "aframe";
-export default class NetworkedAvatar {
+export default class Avatar {
 
 player : AFrame.Entity
 

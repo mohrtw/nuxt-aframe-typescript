@@ -19,7 +19,7 @@ import { mapState } from "vuex"
 import AFRAME from 'aframe'
 import THREE from 'three'
 import Hand from 'enums/player/hand'
-import InputController from 'classes/aframe/input-controller'
+import InputController from '../../classes/aframe/input-controller'
 
 // TODO: Controller should be stored as a global vuex store object and accessed through accessor
 // We should get element once to have reference, and keep the reference, multiple get elements is not efficient

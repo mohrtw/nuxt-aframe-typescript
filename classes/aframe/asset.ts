@@ -1,4 +1,4 @@
-export default class AframeAsset {
+export default class Asset {
         elementType : string
     id: string
     src: string
