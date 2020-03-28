@@ -1,7 +1,7 @@
 export default class AvatarTemplate {
 
-constructor(){
-    var frag = this.fragmentFromString(`
+    constructor() {
+        var frag = this.fragmentFromString(`
     <template id="avatar-template">
           <a-entity class="avatar">
             <a-sphere class="head"
@@ -35,18 +35,12 @@ constructor(){
             </a-entity>
           </a-entity>
         </template>
-    `);
-    var assets = document.querySelector('a-assets');
-    try {
-        assets.appendChild(frag);
+    `)
+        document.querySelector('a-assets').appendChild(frag)
     }
-    catch (err) {
-        console.log('createAvatarGLTFTemplate error');
-        console.log(err);
-    }    
-}
-fragmentFromString(HTML : string) {
-    return document.createRange().createContextualFragment(HTML);
-}
+
+    fragmentFromString(HTML: string) {
+        return document.createRange().createContextualFragment(HTML)
+    }
 
 }

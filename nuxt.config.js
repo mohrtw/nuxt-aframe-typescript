@@ -1,4 +1,4 @@
-import ConfigWebpackPlugin from 'config-webpack';
+import ConfigWebpackPlugin from 'config-webpack'
 
 export default {
 	server: {

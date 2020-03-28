@@ -15,9 +15,9 @@ mounted(){
     methods: {
     onSceneLoaded() {
 
-              const t = document.getElementsByTagName("templatenaf")[0];
+              const t = document.getElementsByTagName("templatenaf")[0]
             // @ts-ignore
-              document.renameNode(t, null, "template");
+              document.renameNode(t, null, "template")
             // @ts-ignore
             NAF.schemas.add({
               template: "#avatar-template",
@@ -45,7 +45,7 @@ mounted(){
                   component: "position"
                 }
               ]
-            });
+            })
       // Add to vuex store?
   }
     }

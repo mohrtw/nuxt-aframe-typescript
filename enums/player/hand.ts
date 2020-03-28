@@ -3,4 +3,4 @@ export enum Hand {
   Left
 }
 
-export default Hand;
+export default Hand
