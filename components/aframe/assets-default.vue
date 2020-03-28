@@ -1,34 +1,17 @@
 <template>
-  <!-- TODO: This scene will only be loaded if the network fails or if we are in developer mode
-  Set up with some default assets and "server did not load" or something, I don't know, whatever
-  -->
   <fragment>
-    <a-asset v-for="(item) in listItems" v-bind:key="item.id" src="item.src" />
+    <a-gltf-model class="scene" id="scene" src="/gltf/scenes/gallery/gallery.gltf" />
+        <a-gltf-model class="avatar-0" id="avatar-0" src="/gltf/avatars/head/scene.gltf" />
   </fragment>
 </template>
 
-
 <script lang="ts">
-
-import Asset from "../../classes/aframe/asset"
-
 // @ts-ignore
-import Fragment from "vue-fragment"
+import  {Fragment} from "vue-fragment"
 
-import Aframe from 'aframe'
-
-export default {
+export default { 
   components: {
-    'a-asset': Aframe.AEntity,
-    fragment: Fragment.Fragment
-  },
-      data: () => {
-      return {
-    listItems: [
-  new Asset("a-gltf-model", "scene", "/gltf/scenes/gallery/gallery.gltf"),
-  new Asset("a-gltf-model", "avatar-0", "/gltf/avatars/head/scene.gltf")
-]
-      }
-      }
+    'fragment': Fragment
+  }
 }
 </script>

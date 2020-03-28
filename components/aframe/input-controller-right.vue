@@ -16,8 +16,6 @@
 
 <script lang="ts">
 import { mapState } from "vuex"
-import AFRAME from 'aframe'
-import THREE from 'three'
 import Hand from 'enums/player/hand'
 import InputController from '../../classes/aframe/input-controller'
 
