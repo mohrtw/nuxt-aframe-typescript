@@ -30,7 +30,6 @@ export default {
 
     methods: {
         onSceneLoaded() {
-            const template = new AvatarTemplate();
             // Add to vuex store?
         }
     }

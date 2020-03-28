@@ -15,7 +15,7 @@ import scene from '../components/aframe/scene.vue'
         'scene': scene,
     }
 })
-export default class IndexComp extends Vue  {
+export default class Index extends Vue  {
 
 }
 </script>
