@@ -5,7 +5,7 @@
     <a-scene networked-scene="room: dev;
       debug: true;
     serverURL:http://localhost:8080;
-      adapter: webrtc;">
+      adapter: socketio;">
     <assets />
     <sceneObjects />
     <avatar />

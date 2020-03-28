@@ -1,53 +1,23 @@
 <template>
-<!-- Avatar -->
-        <div id="avatar-template">
-          <a-entity class="avatar">
-            <a-sphere class="head"
-              color="#ffffff"
-              scale="0.45 0.5 0.4"
-            ></a-sphere>
-            <a-entity class="face"
-              position="0 0.05 0"
-            >
-              <a-sphere class="eye"
-                color="#efefef"
-                position="0.16 0.1 -0.35"
-                scale="0.12 0.12 0.12"
-              >
-                <a-sphere class="pupil"
-                  color="#000"
-                  position="0 0 -1"
-                  scale="0.2 0.2 0.2"
-                ></a-sphere>
-              </a-sphere>
-              <a-sphere class="eye"
-                color="#efefef"
-                position="-0.16 0.1 -0.35"
-                scale="0.12 0.12 0.12"
-              >
-                <a-sphere class="pupil"
-                  color="#000"
-                  position="0 0 -1"
-                  scale="0.2 0.2 0.2"
-                ></a-sphere>
-              </a-sphere>
-            </a-entity>
-          </a-entity>
-        </div>
-</template> 
+  
+</template>
 
 <script lang="ts">
-
+import AvatarTemplate from '../../classes/aframe/avatar-template'
 export default {
-    
 mounted(){
   // Add this to the vuex store
   // @ts-ignore
             document.querySelector('a-entity').addEventListener('loaded', self.onSceneLoaded) 
+            const a = new AvatarTemplate()
 },
 
     methods: {
     onSceneLoaded() {
+
+              const t = document.getElementsByTagName("templatenaf")[0];
+            // @ts-ignore
+              document.renameNode(t, null, "template");
             // @ts-ignore
             NAF.schemas.add({
               template: "#avatar-template",
