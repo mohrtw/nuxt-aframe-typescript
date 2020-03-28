@@ -3,7 +3,7 @@
         
 </template>
 <script lang="ts">
-import AvatarTemplate from 'classes/aframe/avatar-template'
+import AvatarTemplate from '../../classes/aframe/avatar-template'
 
 export default {
     

@@ -9,7 +9,7 @@
 
 
 <script lang="ts">
-import AframeAsset from "classes/aframe/asset"
+import AframeAsset from "../../classes/aframe/asset"
 // @ts-ignore
 import Fragment from "vue-fragment"
 

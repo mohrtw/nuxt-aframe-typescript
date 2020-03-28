@@ -16,14 +16,13 @@
 import avatar from "./avatar.vue"
 import assets from "./assets.vue"
 import sceneObjects from "./scene-objects.vue"
-import avatarTemplate from "./avatar-template.vue"
 
 export default {
     components : {
         assets,
-        sceneObjets,
-        avatarTemplate
-    },
+        sceneObjects,
+        avatar
+            },
     mounted() {
         // This is a really easy way to hook into the lifecycle that is guaranteed due to SSR
             document.querySelector('a-scene').addEventListener('loaded', self.onSceneLoaded) 

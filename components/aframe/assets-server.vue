@@ -10,7 +10,7 @@ TODO: Move logic to pull items dynamically from server
 
 
 <script lang="ts">
-import AframeAsset from "classes/aframe/asset"
+import AframeAsset from "../../classes/aframe/asset"
 // @ts-ignore
 import Fragment from "vue-fragment"
 
