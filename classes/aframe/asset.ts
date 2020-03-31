@@ -1,11 +1,10 @@
 export default class Asset {
-        elementType : string
+    elementType : string
     id: string
     src: string
     className: string
 
     constructor(elementType : string, id : string, src : string, className? : string){
-
         // Add this to the vuex store of assets
         this.elementType = elementType
         this.id = id

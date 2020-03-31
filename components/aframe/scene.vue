@@ -20,7 +20,7 @@ import sceneObjects from "./scene-objects.vue"
 const sceneAttributes = `
     room: xrchat;
     debug: true;
-    serverURL:http://localhost:8080;
+    serverURL:http://localhost:3004;
     adapter: socketio;
     `
 

@@ -1,46 +1,77 @@
+import AFrame from "aframe"
+import AvatarSchema, { AvatarSchemaComponent, defaultComponents } from './avatar-schema'
+import AvatarAsset from './avatar-asset'
+import AvatarAssetGLTF, { defaultAvatarModelSrc } from './avatar-asset-gltf'
+import AvatarAssetHTML, { defaultAvatarModelHtml } from './avatar-asset-html'
+
+
 export default class AvatarTemplate {
 
-    constructor() {
-        var frag = this.fragmentFromString(`
-    <template id="avatar-template">
-          <a-entity class="avatar">
-            <a-sphere class="head"
-              scale="0.45 0.5 0.4"
-            ></a-sphere>
-            <a-entity class="face"
-              position="0 0.05 0"
-            >
-              <a-sphere class="eye"
-                color="#efefef"
-                position="0.16 0.1 -0.35"
-                scale="0.12 0.12 0.12"
-              >
-                <a-sphere class="pupil"
-                  color="#000"
-                  position="0 0 -1"
-                  scale="0.2 0.2 0.2"
-                ></a-sphere>
-              </a-sphere>
-              <a-sphere class="eye"
-                color="#efefef"
-                position="-0.16 0.1 -0.35"
-                scale="0.12 0.12 0.12"
-              >
-                <a-sphere class="pupil"
-                  color="#000"
-                  position="0 0 -1"
-                  scale="0.2 0.2 0.2"
-                ></a-sphere>
-              </a-sphere>
-            </a-entity>
-          </a-entity>
-        </template>
-    `)
-        document.querySelector('a-assets').appendChild(frag)
-    }
+  templateID: string
+  template: string
+  avatarAsset: AvatarAsset
+  components: AvatarSchemaComponent[]
+  schema: AvatarSchema
+  options: AvatarOptions
 
-    fragmentFromString(HTML: string) {
-        return document.createRange().createContextualFragment(HTML)
-    }
+  constructor(templateID = defaultTemplateID, components = defaultComponents, options = defaultAvatarOptions) {
+    this.templateID = templateID
+    this.components = components
+    this.options = options
+    this.schema = new AvatarSchema(this.templateID, this.components)
+    this.avatarAsset = new AvatarAssetGLTF()
+    this.template = this.constructTemplate()
+  }
+
+  setupTemplate() {
+    this.addTemplateToAssets()
+    this.addTemplateToNAF()
+  }
+  addTemplateToAssets() {
+    var frag = this.fragmentFromString(this.template)
+    document.querySelector('a-assets').appendChild(frag)
+  }
+
+  addTemplateToNAF() {
+    // @ts-ignore
+    NAF.schemas.add(this.schema)
+  }
+
+  addTemplateToPlayer(player: AFrame.Entity) {
+    player.setAttribute("networked",
+        { 'template': '#' + this.templateID,
+        'attachTemplateToLocal': this.options.attachTemplateToLocal })
+  }
+
+  addTemplateToPlayerByID(playerID: string = 'player') {
+    const player = document.getElementById(playerID) as AFrame.Entity
+    player.setAttribute("networked",
+        { 'template': '#' + this.templateID,
+        'attachTemplateToLocal': this.options.attachTemplateToLocal })
+  }
+
+  fragmentFromString(HTML: string) {
+    return document.createRange().createContextualFragment(HTML)
+  }
+
+  constructTemplate() {
+    return `
+          <template id="${this.templateID}">
+                <a-entity class="avatar">
+                ${this.avatarAsset.assetString}
+                </a-entity>
+              </template>
+          `
+  }
 
 }
+
+export type AvatarOptions = {
+  attachTemplateToLocal: boolean
+}
+
+export const defaultAvatarOptions = {
+  attachTemplateToLocal: false
+}
+
+export const defaultTemplateID: string = 'avatar-template'
